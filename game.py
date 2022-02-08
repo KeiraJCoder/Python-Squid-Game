@@ -1,11 +1,22 @@
-from random import randint
+import time
+import sys
 import random
 
 
 
 def game ():
+    def sprint(str): # sprint slowly function
+        for c in str + '\n': 
+            sys.stdout.write(c) # sprint 1 letter at a time
+            sys.stdout.flush() # clear the sprint buffer
+            time.sleep(0.04) # time delay
+    def ssprint(str): # sprint slowly function
+        for c in str + '\n': 
+            sys.stdout.write(c) # sprint 1 letter at a time
+            sys.stdout.flush() # clear the sprint buffer
+            time.sleep(0.005) # time delay       
     def start():
-        print("""
+        ssprint("""
                   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
                   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
                   MMMMMMMMMMMMMMNNMMMMMMMMMMMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -34,10 +45,10 @@ def game ():
             if answer.lower()=="yes" or answer.lower()=="y":
                 character() 
             elif answer.lower()=="no" or answer.lower()=="n":
-                print("You know where we are if you change your mind")
+                sprint("You know where we are if you change your mind")
                 exit 
             else:
-                print("Okay then.")
+                sprint("Okay then.")
                 exit() 
                                
     def character():
@@ -46,29 +57,29 @@ def game ():
             global number1
             name=input("What is your name? ")
             if name == "keira".lower():
-                print("Welcome Creator")
+                sprint("Welcome Creator")
             person= input("Choose 1, 2 or 3 ") 
             number=random.randint(1,456)
             number1=random.randint(1,222)
             if person == "1":
-                print(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")       
+                sprint(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")       
                 game_start()
             elif person =="2":
-                print(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")
+                sprint(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")
                 game_start()
             elif person =="3":
-                print(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")
+                sprint(f"Hello {name} Welcome to Squid Game. You have been assigned the number {number}")
                 game_start()
             else:
-                print("Welcome Overseer")
+                sprint("Welcome Overseer")
                 game_two()
             
     def game_start():
             global play_again
             global number
             global name
-            print(f"Welcome to the first game. You are contestant {number} {name}. We will be playing an old favourite.")
-            print(
+            sprint(f"Welcome to the first game. You are contestant {number} {name}. We will be playing an old favourite.")
+            ssprint(
                 """
         ╔═══╗        ╔╗      ╔═══╗                    ╔═══╗
         ║╔═╗║        ║║      ║╔═╗║                    ║╔═╗║
@@ -80,8 +91,8 @@ def game ():
                                     ╚╝
                     """
             )
-            print("You will choose how many rounds you play to beat the game")
-            print("If you lose you will be eliminated")
+            sprint("You will choose how many rounds you play to beat the game")
+            sprint("If you lose you will be eliminated")
             game_1()
                     
     def game_1():
@@ -97,7 +108,7 @@ def game ():
                         break
                     continue
                 except ValueError:
-                    print("Invalid choice.")
+                    sprint("Invalid choice.")
 
         necessary_wins = int(turns/2) + 1
 
@@ -114,45 +125,45 @@ def game ():
                 computer = random.choice(options)
 
                 if player == computer:
-                    print('It is a tie')
+                    sprint('It is a tie')
                 elif player == 'rock' and computer == 'paper':
-                    print('I win, paper covers rock')
+                    sprint('I win, paper covers rock')
                     computer_wins += 1
                 elif player == 'rock' and computer == 'scissors':
-                    print('You win, rock smashes scissors')
+                    sprint('You win, rock smashes scissors')
                     player_wins += 1
                 elif player == 'paper' and computer == 'rock':
-                    print('You win, paper covers rock')
+                    sprint('You win, paper covers rock')
                     player_wins += 1
                 elif player == 'paper' and computer == 'scissors':
-                    print('I win, scissors cut paper')
+                    sprint('I win, scissors cut paper')
                     computer_wins += 1
                 elif player == 'scissors' and computer == 'rock':
-                    print('I win, rock smashes scissors')
+                    sprint('I win, rock smashes scissors')
                     computer_wins += 1
                 elif player == 'scissors' and computer == 'paper':
-                    print('You win, scissors cut paper')
+                    sprint('You win, scissors cut paper')
                     player_wins += 1
 
                 if player_wins == necessary_wins or computer_wins == necessary_wins:
                     break
 
         if player_wins > computer_wins:
-            print(f' Congratulations contestant number {number} You may continue to the next game')
+            sprint(f' Congratulations contestant number {number} You may continue to the next game\n')
             game_two_intro()
         else:
-            print(f'I win. You will now be eliminated. \n\n')
+            sprint(f'I win. You will now be eliminated. \n\n')
         game_over()
     
     def game_two_intro():
         global number1
         global number
         global name
-        print(f"Welcome to the second game. You are contestant {number} {name}. We will be playing a game of chance.\n")
+        sprint(f"Welcome to the second game. You are contestant {number} {name}. We will be playing a game of chance.\n")
         game_two()
         
     def game_two():
-        print(
+        ssprint(
                 """
                _______
               /\ o o o\.
@@ -161,10 +172,7 @@ def game ():
              \ o/  o   /_____/o|
               \/______/     |oo|
                     |   o   |o/
-                    |_______|/
-   
-                                                         
-                                                                      
+                    |_______|/                                                                     
 DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
 D::::::::::::DDD   I::::::::I   CCC::::::::::::CE::::::::::::::::::::E
 D:::::::::::::::DD I::::::::I CC:::::::::::::::CE::::::::::::::::::::E
@@ -186,12 +194,11 @@ DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
             
                             \n""")   
         
-        print("You have been assigned another contestant to play against.\n")
-        print("You will have 5 chances to roll the dice each\n")
-        print("The person with the highest number wins each round\n")
-        print("You have to win 3 rounds out of 5 to continue\n")
-        print("The loser will then be eliminated\n")
-        print("Good luck\n \n")
+        sprint("You have been assigned another contestant to play against.\n")
+        sprint("The person with the highest number wins each round\n")
+        sprint("The first contestant to get to 5 wins and can continue to the next game\n")
+        sprint("The loser will be eliminated\n")
+        sprint("Good luck\n \n")
         game_two_start()
         
     def game_two_start(): 
@@ -208,44 +215,74 @@ DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
             player2_value = random.randint(1, 6)
             
             # Display the values
-            print(f"You rolled:", player1_value)
+            sprint(f"You rolled: {player1_value}")
                 
-            print(f"Contestant {number1} rolled:", player2_value)
+            sprint(f"Contestant {number1} rolled: {player2_value}")
 
         # Selection: based on comparison of the values, take the appropriate path through the code.
             if player1_value == player2_value:
-                print("Draw, no winner.\n")
-                print("Next round")
+                sprint("Draw, no winner.\n")
+                sprint("Play again.")
             elif player1_value > player2_value:
-                print(f"\nYou win this round.\n")
+                sprint(f"\nYou win this round.\n")
                 player1_score = player1_score + 1  # This is how we increment a variable
-                print(f"Your score is {player1_score}")
-                print(f"Contestant {number1}'s score is {player2_score}")
+                ssprint(f"""
+                                ===========================
+                                Your score is {player1_score}
+                                ===========================
+                                Contestant {number1}'s score is {player2_score}
+                                ===========================
+                       """)
                 input("\nPress enter to roll again ")
-                if player1_score >= 5:
-                    print(f"Congratulations contestant {number}, you may continue\n")
-                    print("Your score was:", player1_score)
-                    print(f"Contestant {number1} score:", player2_score)
+                if player1_score == 5:
+                    ssprint(f"Congratulations contestant {number}, you may continue\n")
+                    ssprint(f"""
+                                ===========================
+                                Your score was: {player1_score}
+                                ==========================
+                                Contestant {number1} score:, {player2_score}
+                                ==========================
+                           
+                           """)
+                    
                     input("\nPress enter to continue ")
                     congratulations()
             elif player2_value > player1_value:
-                print(f"\nContestant {number1} wins this round\n")
+                sprint(f"\nContestant {number1} wins this round\n")
                 player2_score = player2_score + 1
-                print(f"Your score is {player1_score}")
-                print(f"Contestant {number1}'s score is {player2_score}")
+                ssprint(f"""
+                      
+                                ===========================
+                                Your score is {player1_score}
+                                ===========================
+                                Contestant {number1}'s score is {player2_score}
+                                ===========================
+                      """)
                 input("\nPress enter to roll again ")
-                if player2_score >= 7:
-                    print("Your score was:", player1_score)
-                    print(f"Contestant {number1} score:", player2_score)
-                    print(f"You lose contestant {number}. You will now be eliminated")
-                    input("\nPress enter to continue ")
+                if player2_score >= 5:
+                    sprint(f"""
+                                ==========================
+                                Your score was:, {player1_score}
+                                ==========================
+                                Contestant {number1}'s score was:, {player2_score}
+                                ===========================
+                          """)
+                    ssprint(f"""
+                                ===============================
+                                You lose contestant {number}. You will now be eliminated
+                                ===============================
+                           """)
+                    ssprint(f""" ===============================
+                                        Have a nice day
+                                =============================== """)
+                    input("       \nPress enter to continue ")
                     game_over()
             else:
-                print("""
-                      
-                      ==========================
-                      |  THERE CAN BE NO DRAW  |
-                      ==========================
+                sprint("""
+                                ==========================
+                                |  THERE CAN BE NO DRAW  |
+                                |      PLAY AGAIN        |
+                                ==========================
                       
                       
                       \n""")
@@ -254,19 +291,19 @@ DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
         
     def congratulations():
 
-        print("""
-                 db    db  .d88b.  db    db   db   d8b   db d888888b d8b   db
-                 `8b  d8' .8P  Y8. 88    88   88   I8I   88   `88'   888o  88
-                 `8bd8'  88    88 88    88   88   I8I   88    88    88V8o 88
-                    88    88    88 88    88   Y8   I8I   88    88    88 V8o88
-                     88    `8b  d8' 88b  d88   `8b d8'8b d8'   .88.   88  V888
-                     YP     `Y88P'  ~Y8888P'    `8b8' `8d8'  Y888888P VP   V8P
-                  
+        ssprint("""
+                            db    db  .d88b.  db    db   db   d8b   db d888888b d8b   db
+                            `8b  d8' .8P  Y8. 88    88   88   I8I   88   `88'   888o  88
+                            `8bd8'  88    88 88    88   88   I8I   88    88    88V8o 88
+                              88    88    88 88    88   Y8   I8I   88    88    88 V8o88
+                              88    `8b  d8' 88b  d88   `8b d8'8b d8'   .88.   88  V888
+                              YP     `Y88P'  ~Y8888P'    `8b8' `8d8'  Y888888P VP   V8P
+                            
                   """) 
             
         winnings = random.randint(2773411000, 5283211000)
-        print(f"You won a grand total of £{winnings}")
-        print("And your life")
+        sprint(f"You won a grand total of £{winnings}")
+        sprint("And your life")
         exit()  
         
     def game_over():
@@ -291,7 +328,7 @@ DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
             print(count_down)
             count_down -=  1
         print(random.choice(death_note)+" ")
-        print("""
+        ssprint("""
              ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  
              ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
              ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
