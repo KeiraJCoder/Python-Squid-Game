@@ -60,8 +60,10 @@ def game ():
             global number1
             global contestants
             global prize
+            global chance
             
             
+            chance = 0
             contestants = 456
             
             name=input("                                                               What is your name? ")
@@ -80,8 +82,8 @@ def game ():
             elif person =="3":
                 game_start()
             elif person =="1987":
-                sprint("                                                                   Welcome Overseer")
-                drawing()
+                sprint("                                                                 Welcome Overseer\n\n")
+                game_three()
             
     def game_start():
             global play_again
@@ -321,67 +323,102 @@ def game ():
                       \n""")
                 game_three()
     def game_three():
-        sprint(f"                         Welcome to the third game. You are contestant {number}. We will be playing a game of chance.\n")
+        sprint(f"                         Welcome to the third game. You are contestant {number}. We will be playing a game of skill\n")
         ssprint(
                                                         """
-                                                     _______
-                                                    /\ o o o\.
-                                                   /o \ o o o\_______
-                                                  <    >------>   o / |
-                                                   \ o/  o   /_____/ o|
-                                                    \/______/       |o|
-                                                            |   o   |o/
-                                                            |_______|/                                                                     
-                                        DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
-                                        D::::::::::::DDD   I::::::::I   CCC::::::::::::CE::::::::::::::::::::E
-                                        D:::::::::::::::DD I::::::::I CC:::::::::::::::CE::::::::::::::::::::E
-                                        DDD:::::DDDDD:::::DII::::::IIC:::::CCCCCCCC::::CEE::::::EEEEEEEEE::::E
-                                        D:::::D    D:::::D I::::I C:::::C       CCCCCC  E:::::E       EEEEEE
-                                        D:::::D     D:::::DI::::IC:::::C                E:::::E             
-                                        D:::::D     D:::::DI::::IC:::::C                E::::::EEEEEEEEEE   
-                                        D:::::D     D:::::DI::::IC:::::C                E:::::::::::::::E   
-                                        D:::::D     D:::::DI::::IC:::::C                E:::::::::::::::E   
-                                        D:::::D     D:::::DI::::IC:::::C                E::::::EEEEEEEEEE   
-                                        D:::::D     D:::::DI::::IC:::::C                E:::::E             
-                                        D:::::D    D:::::D I::::I C:::::C       CCCCCC  E:::::E       EEEEEE
-                                        DDD:::::DDDDD:::::DII::::::IIC:::::CCCCCCCC::::CEE::::::EEEEEEEE:::::E
-                                        D:::::::::::::::DD I::::::::I CC:::::::::::::::CE::::::::::::::::::::E
-                                        D::::::::::::DDD   I::::::::I   CCC::::::::::::CE::::::::::::::::::::E
-                                        DDDDDDDDDDDDD      IIIIIIIIII      CCCCCCCCCCCCCEEEEEEEEEEEEEEEEEEEEEE
-                                                                                                            
-                                                                                                            
+                                             ________ __    __ _______  ________ __       ________ 
+                                            |        \  \  |  \       \|        \  \     |        \.
+                                             \▓▓▓▓▓▓▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓\\▓▓▓▓▓▓▓▓  ▓▓     | ▓▓▓▓▓▓▓▓
+                                               | ▓▓  | ▓▓  | ▓▓ ▓▓__| ▓▓  | ▓▓  | ▓▓     | ▓▓__    
+                                               | ▓▓  | ▓▓  | ▓▓ ▓▓    ▓▓  | ▓▓  | ▓▓     | ▓▓  \   
+                                               | ▓▓  | ▓▓  | ▓▓ ▓▓▓▓▓▓▓\  | ▓▓  | ▓▓     | ▓▓▓▓▓   
+                                               | ▓▓  | ▓▓__/ ▓▓ ▓▓  | ▓▓  | ▓▓  | ▓▓_____| ▓▓_____ 
+                                               | ▓▓   \▓▓    ▓▓ ▓▓  | ▓▓  | ▓▓  | ▓▓     \ ▓▓     \.
+                                                \▓▓    \▓▓▓▓▓▓ \▓▓   \▓▓   \▓▓   \▓▓▓▓▓▓▓▓\▓▓▓▓▓▓▓▓                                                                             
             
                             \n""")   
         
-        sprint("                                        You have been assigned another contestant to play against.\n")
-        sprint("                                             The person with the highest number wins each round\n")
-        sprint("                                      The first contestant to get to 5 wins continues to the next game\n")
-        sprint("                                                       The loser will be eliminated\n")
+        sprint("                                          You will play this game alone, no others can help you\n")
+        sprint("                                     The people able to complete the task within the time will continue\n")
+        sprint("                                        Those who fail or who run out of time will be eliminated\n")
+        
         sprint("                                                               Good luck\n \n")
+        
+        
+        game_three_start()
+        
+    
+    
+    def game_three_start():
+        global chance
+
+        shapes =[
+            "Square",
+            "Circle",
+            "Star",
+            "Spiral"
+        ]
+        
+        shapes1 = random.choice(shapes)
+
+        
+        sprint("It is time to make a choice, before you stands four doors.\n")
+        sprint("Each door is emblazoned with a number\n")
+       
+        choice2 = int(input("Which door do you choose? 1, 2, 3 or 4? \n\n"))
+        
+        if chance <= 1:
+            chance += 1
+            if choice2 == 1:
+                sprint("You have chosen the First door\n")
+                sprint(f"Your shape will be {shapes1}\n")
+                sprint("Good luck")
+                
+            elif choice2 == 2:
+                sprint("You have chosen the Second door\n")
+                sprint(f"Your shape will be {shapes1}\n")
+                sprint("Good luck")
+                
+            elif choice2 == 3:
+                sprint("You have chosen the Third door\n")
+                sprint(f"Your shape will be {shapes1}\n")
+                sprint("Good luck")
+                
+            elif choice2 == 4:
+                sprint("You have chosen the Fourth door\n")
+                sprint(f"Your shape will be {shapes1}\n")
+                sprint("Good luck")
+            else:
+                sprint("Do not test me\n\n")
+                game_three_start()
+        else:
+            sprint("I told you not to test me\n\n")
+            game_over()
+        
+        
                     
     def drawing():
-        screen = Screen()
-        t = Turtle("turtle")
-        t.speed(-1)
-
-    def dragging(x, y):  # These parameters will be the mouse position
-        t.ondrag(None)
-        t.setheading(t.towards(x, y))
-        t.goto(x, y)
-        t.ondrag(dragging)
-
-    def clickRight():
-        t.clear()
-
-    def main():  # This will run the program
+        wn=turtle.Screen()
+        wn.bgcolor("green")
+        
+        player=turtle.Turtle()
+        player.color("red")
+        player.penup()
+        
+        speed = 1
+    
+    def turnleft():
+        
+        player.left(30)
+        
+        
         turtle.listen()
-                    
-        t.ondrag(dragging)  # When we drag the turtle object call dragging
-        turtle.onscreenclick(clickRight, 3)
-
-        screen.mainloop()  # This will continue running main() 
-
-    drawing()
+        turtle.onkey(turnleft, 'Left')
+        
+        while True:
+            player.forward(speed)
+        
+        delay = input("Press enter to finish")
                 
         
     def congratulations():
